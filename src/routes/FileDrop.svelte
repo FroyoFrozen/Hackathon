@@ -48,9 +48,7 @@
           }
         });
 
-        records = records.filter(row => {
-          if (row) { return true }
-        })
+        records = records.filter(row => row !== undefined);
 
         console.log(`Uploading data for sheet: ${sheetName}`);
         console.log(records); // Debugging output
@@ -58,6 +56,9 @@
         // Upload data to Firestore
         await uploadDataToFirestore(sheetName, records);
       }
+
+      // Reload the page after all data is uploaded
+      location.reload();
     };
     reader.readAsArrayBuffer(selectedFile);
   }
