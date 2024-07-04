@@ -11,6 +11,9 @@
   </svelte:head>
   
   <section>
+	<h1>
+		Dashboard
+	</h1>
 	<FileDrop />
   </section>
   
