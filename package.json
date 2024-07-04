@@ -22,6 +22,7 @@
 	"type": "module",
 	"dependencies": {
 		"file-saver": "^2.0.5",
+		"firebase": "^10.12.3",
 		"xlsx": "^0.18.5"
 	}
 }
