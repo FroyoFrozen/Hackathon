@@ -6,14 +6,14 @@
   
 	let testing = '';
   
-	// Ophalen van data uit Firestore zodra de component gemount is
+	// Fetch data from Firestore when the component is mounted
 	onMount(async () => {
 	  try {
 		const docRef = doc(db, "test", "Fdox5QjrGrS38nSllQia");
 		const docSnap = await getDoc(docRef);
   
 		if (docSnap.exists()) {
-		  console.log("Document data:", docSnap.data()); // Voeg deze regel toe om de volledige documentgegevens te loggen
+		  console.log("Document data:", docSnap.data());
 		  testing = docSnap.data().string;
 		} else {
 		  console.log("No such document!");
@@ -30,11 +30,9 @@
   </svelte:head>
   
   <section>
-	<h1>
-		Dashboard
-	</h1>
+	<h1>Dashboard</h1>
 	<FileDrop />
-	<p>{testing}</p> <!-- Hier wordt de string weergegeven -->
+	<p>{testing}</p>
   </section>
   
   <style>
