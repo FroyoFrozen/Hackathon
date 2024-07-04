@@ -29,7 +29,7 @@
 	</nav>
 
 	<div class="corner">
-		<a href="https://github.com/FroyoFrozen/Hackathon">
+		<a target="_blank" href="https://github.com/FroyoFrozen/Hackathon">
 			<img src={github} alt="GitHub Project Link" />
 		</a>
 	</div>
