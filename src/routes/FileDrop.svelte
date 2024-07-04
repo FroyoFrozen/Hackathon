@@ -1,10 +1,9 @@
-<!-- FileDrop.svelte -->
 <script>
   import { onMount } from 'svelte';
   import * as XLSX from 'xlsx';
   import { db } from './firebase.js';
-  import { collection, addDoc } from "firebase/firestore"; 
-  
+  import { collection, doc, setDoc } from "firebase/firestore"; 
+
   /**
    * @type {Blob}
    */
@@ -30,26 +29,52 @@
     reader.onload = async (e) => {
       const data = new Uint8Array(e.target.result);
       const workbook = XLSX.read(data, { type: 'array' });
-      const sheetName = workbook.SheetNames[0];
-      const worksheet = workbook.Sheets[sheetName];
-      const json = XLSX.utils.sheet_to_json(worksheet);
-      console.log(json); // Do something with the data
-      await uploadDataToFirestore(json);
+      
+      // Process each sheet in the workbook
+      for (const sheetName of workbook.SheetNames) {
+        const worksheet = workbook.Sheets[sheetName];
+        const json = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+        
+        // Get the header row
+        const headers = json[0];
+        let records = json.slice(1).map((row, index) => {
+          let record = {};
+          row.forEach((cell, idx) => {
+            record[headers[idx]] = cell;
+          });
+          if (row[0]) {
+            record.id = row[0]; // Use the time value as the document ID
+            return record;
+          }
+        });
+
+        records = records.filter(row => {
+          if (row) { return true }
+        })
+
+        console.log(`Uploading data for sheet: ${sheetName}`);
+        console.log(records); // Debugging output
+
+        // Upload data to Firestore
+        await uploadDataToFirestore(sheetName, records);
+      }
     };
     reader.readAsArrayBuffer(selectedFile);
   }
 
   /**
    * Uploads data to Firestore
+   * @param {string} sheetName
    * @param {Array} data
    */
-  async function uploadDataToFirestore(data) {
+  async function uploadDataToFirestore(sheetName, data) {
     try {
-      const collectionRef = collection(db, "excelData");
+      const collectionRef = collection(db, sheetName);
       for (const record of data) {
-        await addDoc(collectionRef, record);
+        const docRef = doc(collectionRef, record.id);
+        await setDoc(docRef, record);
       }
-      alert("Data uploaded successfully!");
+      alert(`Data for ${sheetName} uploaded successfully!`);
     } catch (error) {
       console.error("Error uploading data: ", error);
       alert("Error uploading data. Check the console for more details.");
