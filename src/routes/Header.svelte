@@ -17,7 +17,7 @@
 				<a href="/">Dashboard</a>
 			</li>
 			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">Over</a>
+				<a href="/about">Over Project</a>
 			</li>
 			<li >
 				<a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Free Robux</a>
