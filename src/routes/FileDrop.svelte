@@ -63,7 +63,7 @@
     on:dragover={handleDragOver}
     class="dropbox"
   >
-    Drop your Excel file here or click to upload
+    Drop your Excel file here 
     <input type="file" accept=".xlsx, .xls" on:change="{(e) => handleFile(e.target.files[0])}" />
   </div>
   <button on:click={handleButtonClick}>Convert to CSV</button>
