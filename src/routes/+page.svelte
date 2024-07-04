@@ -9,18 +9,13 @@
 
 <section>
 	<h1>
-		<span class="welcome">
-		</span>
-
 		Hackathon - 2024
 	</h1>
 
 	<h2>
 		door <strong>Hacked01</strong>
 	</h2>
-
-	<p>Elke klik op de counter is 1 like voor de hackathon</p>
-	<Counter />
+	
 </section>
 
 <style>
@@ -34,21 +29,5 @@
 
 	h1 {
 		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
 	}
 </style>
