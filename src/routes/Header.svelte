@@ -20,7 +20,7 @@
 				<a href="/about">Over Project</a>
 			</li>
 			<li >
-				<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Free Robux</a>
+				<a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Free Robux</a>
 			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
@@ -29,7 +29,7 @@
 	</nav>
 
 	<div class="corner">
-		<a href="https://github.com/FroyoFrozen/Hackathon">
+		<a target="_blank" href="https://github.com/FroyoFrozen/Hackathon">
 			<img src={github} alt="GitHub Project Link" />
 		</a>
 	</div>
