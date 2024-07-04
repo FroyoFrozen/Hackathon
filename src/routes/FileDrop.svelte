@@ -4,8 +4,14 @@
     import * as XLSX from 'xlsx';
     import saveAs from 'file-saver'; // Correct import
   
+    /**
+     * @type {Blob}
+     */
     let file;
   
+    /**
+     * @param {{ preventDefault: () => void; dataTransfer: { files: any; }; }} event
+     */
     function handleDrop(event) {
       event.preventDefault();
       const files = event.dataTransfer.files;
@@ -14,6 +20,9 @@
       }
     }
   
+    /**
+     * @param {Blob} selectedFile
+     */
     function handleFile(selectedFile) {
       file = selectedFile;
       const reader = new FileReader();
