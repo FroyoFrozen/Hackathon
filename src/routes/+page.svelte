@@ -8,7 +8,7 @@
   
 	// Function to fetch data from all collections and documents
 	const fetchData = async () => {
-	  const collections = ["Docent #1", "Docent #2", "Nederlands #1", "test"];
+	  const collections = ["Docent #1", "Docent #2", "Nederlands #1", "Internationaal #1", "Internationaal #2"];
 	  let data = {};
   
 	  for (const collectionName of collections) {
