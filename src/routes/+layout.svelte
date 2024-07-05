@@ -11,7 +11,7 @@
 	</main>
 
 	<footer>
-		Goeie app
+		<p>&copy; 2024 Hacked01. All rights reserved.</p>
 	</footer>
 </div>
 
@@ -39,10 +39,24 @@
 		justify-content: center;
 		align-items: center;
 		padding: 12px;
+		background-color: #e74c3c; /* Mooie rode kleur */
+		color: white;
+		width: 100%;
+	}
+
+	footer p {
+		margin: 5px 0;
 	}
 
 	footer a {
 		font-weight: bold;
+		color: white;
+		text-decoration: none;
+		margin: 0 10px;
+	}
+
+	footer a:hover {
+		text-decoration: underline;
 	}
 
 	@media (min-width: 480px) {
